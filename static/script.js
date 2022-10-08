@@ -10,7 +10,7 @@ $(document).ready(function() { $('[data-bs-toggle="tooltip"]').tooltip({animatio
 search.addEventListener("input", async function () {
     if (search.value) {
         response = await fetch(`/search?q=${search.value}`); 
-        results = JSON.parse(await response.text());
+        results = JSON.parse(await response.text())["data"];
         for (let i in results) {
             autocompleteResults[i].innerText = results[i];
         }

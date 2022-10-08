@@ -1,4 +1,3 @@
-from tokenize import String
 from flask import Flask, render_template, request
 import requests
 import json
@@ -32,7 +31,4 @@ def search():
     if q:
         for result in json.loads(requests.get("https://sugg.search.yahoo.net/sg/?output=json&nresults=10&command={}".format(parse.quote(q))).text)["gossip"]["results"]:
             results.append(result["key"])
-    return results
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    return {"data": results}

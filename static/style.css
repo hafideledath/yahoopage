@@ -5,7 +5,6 @@ body, html {
 }
 
 body {
-    background: rgb(126,31,240);
     background: linear-gradient(112deg, #7e1fff 22%, #6001d2 22%);
     color: white;
     font-family: "Roboto", sans-serif;
@@ -48,6 +47,23 @@ ion-icon:hover, .component:hover {
     margin-top: 8px;
 }
 
+#overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #00000066;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+#searchbar, #autocomplete {
+    z-index: 10000;
+    position: relative;
+}
+
 #searchbar {
     display: flex;
     align-items: center;
@@ -72,6 +88,7 @@ ion-icon:hover, .component:hover {
 }
 
 #autocomplete {
+    cursor: default;
     margin: 0 auto;
     max-width: 680px;
     height: 338px;
@@ -79,18 +96,24 @@ ion-icon:hover, .component:hover {
     border-radius: 0 0 16px 16px;
 }
 
-.result {
+.result-container {
+    display: flex;
+    vertical-align: auto;
     color: #000000;
     width: 100%;
     height: 32px;
-    padding: 5px 8%;
+    padding: 5px 2.5%;
     font-size: 1rem;
     border-left: 2px solid #00000000;
 }
 
-.result:hover {
+.result-container:hover {
     border-left-color: #4884f4;
     background-color: #f0f3f5;
+}
+
+.result {
+    margin-left: 20px;
 }
 
 input:focus {
@@ -106,6 +129,10 @@ input:focus {
     border-left: 1px solid #e0e4e9; 
     padding-left: 20px;
     height: 20px;
+}
+
+#mic, #close {
+    z-index: 99999;
 }
 
 #mic {

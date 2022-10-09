@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <div id="overlay"></div>
   <!-- Navbar -->
     <nav class="navbar">
         <div class="container justify-content-end">
@@ -56,16 +57,16 @@
       </div>
       <!-- Autocomplete results -->
       <div id="autocomplete" class="d-none" onclick="autoSearch(event)">
-        <div class="result"></div>
-        <div class="result"></div>
-        <div class="result"></div>
-        <div class="result"></div>
-        <div class="result"></div>
-        <div class="result"></div>
-        <div class="result"></div>
-        <div class="result"></div>
-        <div class="result"></div>
-        <div class="result"></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
+        <div class="result-container"><ion-icon class="text-dark fs-5" name="search-outline"></ion-icon><div class="result"></div></div>
       </div>
 
       <!-- Footer -->

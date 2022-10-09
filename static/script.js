@@ -1,6 +1,7 @@
 const closebutton = document.getElementById("close");
 const search = document.getElementById("search");
 const searchbar = document.getElementById("searchbar");
+const overlay = document.getElementById("overlay");
 const autocompleteResults = document.querySelectorAll(".result");
 const autocompleteContainer = document.getElementById("autocomplete");
 let enabled = false;
@@ -10,14 +11,15 @@ $(document).ready(function() { $('[data-bs-toggle="tooltip"]').tooltip({animatio
 search.addEventListener("input", async function () {
     if (search.value) {
         response = await fetch(`/search?q=${search.value}`); 
-        results = JSON.parse(await response.text())["data"];
+        results = JSON.parse(await response.text())["gossip"]["results"];
         for (let i in results) {
-            autocompleteResults[i].innerText = results[i];
+            autocompleteResults[i].innerText = results[i]["key"];
         }
 
         if (!enabled) {
             enabled = true;
             $("#close").tooltip("enable");
+            overlay.style.display = "block";
             closebutton.classList.remove("hidden");
             searchbar.style.borderRadius = "16px 16px 0 0";
             closebutton.addEventListener("click", clear);
@@ -26,6 +28,7 @@ search.addEventListener("input", async function () {
     } else {
         enabled = false;
         $("#close").tooltip("disable");
+        overlay.style.display = "none";
         closebutton.classList.add("hidden");
         searchbar.style.borderRadius = "100vw";
         closebutton.removeEventListener("click", clear);
@@ -43,6 +46,7 @@ function clear() {
     enabled = false;
     search.value = "";
     $("#close").tooltip("disable");
+    overlay.style.display = "none";
     closebutton.classList.add("hidden");
     searchbar.style.borderRadius = "100vw";
     closebutton.removeEventListener("click", clear);

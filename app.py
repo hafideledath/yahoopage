@@ -28,7 +28,4 @@ def index():
 def search():
     q = request.args.get("q")
     results = []
-    if q:
-        for result in json.loads(requests.get("https://sugg.search.yahoo.net/sg/?output=json&nresults=10&command={}".format(parse.quote(q))).text)["gossip"]["results"]:
-            results.append(result["key"])
-    return {"data": results}
+    return requests.get("https://sugg.search.yahoo.net/sg/?output=json&nresults=10&command={}".format(parse.quote(q))).text
